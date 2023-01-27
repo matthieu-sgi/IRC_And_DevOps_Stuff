@@ -6,10 +6,10 @@ class DataStream:
         self.sck = socket
 
     def send_int(self, i: int):
-        self.sck.send(bytes(i))
+        self.sck.send(i.to_bytes(4, "little"))
     
     def receive_int(self) -> int:
-        return int(self.sck.recv(struct.calcsize('i')))
+        return int.from_bytes(self.sck.recv(struct.calcsize('i')), "little")
 
     def send_str(self, s: str):
         bs = s.encode('utf-8')

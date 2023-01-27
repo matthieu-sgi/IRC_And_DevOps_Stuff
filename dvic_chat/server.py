@@ -58,7 +58,7 @@ class ChatClient():
 
     def _handle_packet1_auth(self, pck):
         self.set_client_name(pck.name)
-        self.srv.broadcast(f'{self.name} has entered the chat')
+        self.server.broadcast(f'{self.name} has entered the chat')
 
     def _handle_packet2_message(self, pck):
         if self.name == "unknown":
